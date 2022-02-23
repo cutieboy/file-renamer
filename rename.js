@@ -1,7 +1,8 @@
 const { readdirSync, mkdirSync, existsSync, rename } = require("fs");
 const { resolve } = require("path");
 
-const imageDirPath = resolve(__dirname, "./");
+const imageDirPath = resolve(__dirname, "./input");
+const rootPath = resolve(__dirname, "./");
 
 const files = readdirSync(imageDirPath);
 
@@ -24,10 +25,8 @@ files.forEach((file) => {
     mkdirSync("./output");
   }
 
-  rename(
-    imageDirPath + `/${file}`,
-    imageDirPath + `/output/${newString}`,
-    (err) => console.log(err)
+  rename(imageDirPath + `/${file}`, rootPath + `/output/${newString}`, (err) =>
+    console.log(err)
   );
 
   console.log(newString);
