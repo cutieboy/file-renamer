@@ -11,6 +11,9 @@ files.forEach((file) => {
     return;
   }
   const newName = file.split("-");
+  //df0f3f03kf0-blah.png
+  //['df0f3f03kf0', 'blah']
+  //blah.png
   let newString = "";
 
   if (newName.length > 1) {
@@ -25,8 +28,10 @@ files.forEach((file) => {
     mkdirSync("./output");
   }
 
-  rename(imageDirPath + `/${file}`, rootPath + `/output/${newString}`, (err) =>
-    console.log(err)
+  rename(
+    imageDirPath + `/${file}`,
+    rootPath + `/output/${newString}`,
+    (err) => err && console.log(err)
   );
 
   console.log(newString);
